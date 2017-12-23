@@ -1,8 +1,8 @@
 // external imports
 import { offsetToCursor } from 'graphql-relay'
 // local improts
-import { Fund } from '~/client/contracts'
-import { queryServer } from '~/client/utils'
+import { Fund } from '~/contracts'
+import { queryServer } from '~/client/schema/utils'
 
 const deployFund = name =>
     new Promise((resolve, reject) => {
