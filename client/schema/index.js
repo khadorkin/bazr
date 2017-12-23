@@ -34,6 +34,10 @@ extend type Mutation {
 extend type Fund {
     contract: FundContract!
 }
+
+extend type FundContract {
+    fund: Fund
+}
 `
 
 // a factory for the api's schema
@@ -107,6 +111,13 @@ export default async function createSchema(githubToken) {
                         // return the repository designated by the ID
                         return mergeInfo.delegate('query', 'fundContract', { address: parent.address }, context, info)
                     }
+                }
+            },
+            FundContract: {
+                fund: {
+                    fragment: `fragment FundContractFund on FundContract { address } `,
+                    resolve: (parent, args, context, info) =>
+                        mergeInfo.delegate('query', 'fund', { address: parent.address }, context, info)
                 }
             },
             Mutation: {
