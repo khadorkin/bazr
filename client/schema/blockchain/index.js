@@ -3,8 +3,6 @@ import { GraphQLScalarType } from 'graphql'
 import { makeExecutableSchema } from 'graphql-tools'
 import BigNumber from 'bignumber.js'
 import { Kind } from 'graphql/language'
-// local imports
-import { Fund } from '../../contracts'
 
 export default makeExecutableSchema({
     typeDefs: `

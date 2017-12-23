@@ -56,7 +56,7 @@ module.exports = {
             new RegExp(`^\\./.*\\.js$`)
         )
     ],
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'source-map',
     devServer: {
         port: 3000,
         historyApiFallback: true,
