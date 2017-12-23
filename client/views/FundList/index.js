@@ -25,6 +25,7 @@ const FundList = (_, { environment }) => (
                     query={graphql`
                         query FundListQuery {
                             viewer {
+                                ...CreateFundOverlay_viewer
                                 funds(first: 100) @connection(key: "FundList_funds", filters: []) {
                                     edges {
                                         node {
@@ -38,7 +39,7 @@ const FundList = (_, { environment }) => (
                     `}
                     render={({ viewer }) => (
                         <React.Fragment>
-                            <CreateFundOverlay visible={state} toggle={toggle} />
+                            <CreateFundOverlay viewer={viewer} visible={state} toggle={toggle} />
                             {viewer.funds.edges.map(({ node: fund }, i) => (
                                 <FundListRow
                                     fund={fund}

@@ -3,6 +3,7 @@
 import React from 'react'
 import { Text } from 'quark-web'
 import PropTypes, { any } from 'prop-types'
+import { createFragmentContainer, graphql } from 'react-relay'
 // local imports
 import { depositEther } from '~/client/mutations'
 import styles from './styles'
@@ -27,7 +28,8 @@ class CollectDeposit extends React.Component<Props> {
                 environment: this.context.environment,
                 input: {
                     address: this.props.fund.address,
-                    amount: this.props.deposit
+                    amount: this.props.deposit,
+                    from: this.props.viewer.login
                 }
             })
 
@@ -44,4 +46,11 @@ class CollectDeposit extends React.Component<Props> {
     render = () => <Text>Collecting initial deposit...</Text>
 }
 
-export default CollectDeposit
+export default createFragmentContainer(
+    CollectDeposit,
+    graphql`
+        fragment CollectDeposit_viewer on User {
+            login
+        }
+    `
+)

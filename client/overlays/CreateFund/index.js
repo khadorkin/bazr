@@ -5,6 +5,7 @@ import { View } from 'react-native-web'
 import { H1, Label, Text, SecondaryButton, PrimaryButton, Form, Overlay } from 'quark-web'
 import PropTypes from 'prop-types'
 import { ConnectionHandler } from 'relay-runtime'
+import { createFragmentContainer, graphql } from 'react-relay'
 // local imports
 import styles from './styles'
 import { createFund } from '~/client/mutations'
@@ -98,6 +99,7 @@ class CreateFundOverlay extends React.Component<Props, State> {
                                     toggleError={this._toggleError}
                                     fund={this.state.fund}
                                     deposit={this.state.deposit}
+                                    viewer={this.props.viewer}
                                 />
                             }
                         } else {
@@ -110,4 +112,11 @@ class CreateFundOverlay extends React.Component<Props, State> {
     }
 }
 
-export default CreateFundOverlay
+export default createFragmentContainer(
+    CreateFundOverlay,
+    graphql`
+        fragment CreateFundOverlay_viewer on User {
+            ...CollectDeposit_viewer
+        }
+    `
+)

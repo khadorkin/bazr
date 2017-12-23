@@ -3,12 +3,15 @@ import { GraphQLScalarType } from 'graphql'
 import { makeExecutableSchema } from 'graphql-tools'
 import BigNumber from 'bignumber.js'
 import { Kind } from 'graphql/language'
+// local imports
+import { Fund } from '~/contracts'
 
 export default makeExecutableSchema({
     typeDefs: `
         scalar BigNumber
 
         input DepositEtherInput {
+            from: String!
             address: String!
             amount: BigNumber!
         }
@@ -50,20 +53,23 @@ export default makeExecutableSchema({
             }
         },
         Mutation: {
-            depositEther: (_, { input: { address: fundAddress, amount } }) =>
+            depositEther: (_, { input: { from: donor, address: fundAddress, amount } }) =>
                 new Promise((resolve, reject) => {
                     // the acount of the user
                     const userAddress = window.web3.eth.accounts[0]
                     // the amount we are sending in wei
                     const transactionAmount = window.web3.toWei(amount, 'ether')
 
-                    // send the amount the user designated
-                    window.web3.eth.sendTransaction(
+                    // deposit the designated amount into the fund address
+                    Fund.at(fundAddress).deposit.sendTransaction(
+                        // attribute the donation to the specified user
+                        donor,
+                        // use the given wallet source and donation amount
                         {
                             from: userAddress,
-                            to: fundAddress,
                             value: transactionAmount
                         },
+                        // resolve promise appropriately
                         (err, data) => {
                             if (err) {
                                 reject(err)
