@@ -1,9 +1,8 @@
 // @flow
 // external imports
 import React from 'react'
-import { Text } from 'quark-web'
+import { Text, Timeout } from 'quark-web'
 import { withRouter } from 'react-router-dom'
-import { Timeout } from '~/client/quark'
 
 const Finalize = ({ fund, history }) => (
     <React.Fragment>

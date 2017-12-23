@@ -48,7 +48,13 @@ module.exports = {
             'process.env': {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV)
             }
-        })
+        }),
+        // *sigh*... remove the annoying warnings
+        // FROM: https://github.com/graphql/graphql-language-service/issues/128
+        new webpack.ContextReplacementPlugin(
+            /graphql-language-service-interface[\\/]dist$/,
+            new RegExp(`^\\./.*\\.js$`)
+        )
     ],
     devtool: 'cheap-module-eval-source-map',
     devServer: {

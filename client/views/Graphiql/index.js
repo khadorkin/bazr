@@ -3,8 +3,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import GraphiQL from 'graphiql'
 import { graphql } from 'graphql'
+import { Portal } from 'quark-web'
 // local imports
-import { Portal } from '~/client/quark'
 import createSchema from '~/client/schema'
 import './styles.css'
 

@@ -1,7 +1,6 @@
 // external imports
 import React from 'react'
-import { Form, Label, Text, PrimaryButton, SecondaryButton } from 'quark-web'
-import { Input } from '~/client/quark'
+import { Form, Label, Text, PrimaryButton, SecondaryButton, Input } from 'quark-web'
 import { View } from 'react-native-web'
 // local imports
 import styles from './styles'

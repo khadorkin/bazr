@@ -17,7 +17,7 @@ const FundList = (_, { environment }) => (
             <React.Fragment>
                 <View style={styles.header}>
                     <H1>My Funds</H1>
-                    <PrimaryButton onClick={toggle}>Create a Fund</PrimaryButton>
+                    <PrimaryButton onPress={toggle}>Create a Fund</PrimaryButton>
                 </View>
                 <QueryRenderer
                     query={graphql`

@@ -2,8 +2,7 @@
 // external imports
 import * as React from 'react'
 import { View } from 'react-native-web'
-import { H1, Label, Text, SecondaryButton, PrimaryButton, Form } from 'quark-web'
-import { Overlay } from '~/client/quark'
+import { H1, Label, Text, SecondaryButton, PrimaryButton, Form, Overlay } from 'quark-web'
 import PropTypes from 'prop-types'
 import { ConnectionHandler } from 'relay-runtime'
 // local imports
