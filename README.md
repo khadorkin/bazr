@@ -10,7 +10,7 @@ A place to compensate open source development
 
 It is recommended that you run a local ethereum block chain to develop against. [Ganache](http://truffleframework.com/ganache/) is a good option with an easy-to-use UI. Once you have Ganache running locally, the next step is to configure a browser client for the network. This project was developed with [MetaMask](https://metamask.io/) in mind but should work with the Mist browser or any other environment with an embedded `web3` object globally accessible.
 
-To configure MetaMask to run with Ganache, open the account tab in Ganache, and copy the private key for one of the users. Open MetaMask and import the key.
+To configure MetaMask to run with Ganache, open the account tab in Ganache, and copy the private key for one of the users. Open MetaMask and import the key. For more information, see [here](http://truffleframework.com/docs/advanced/truffle-with-metamask) under `Settings up MetaMask`.
 
 ### Configuring Environment
 
@@ -30,7 +30,7 @@ as fully function. To set these variables, create a file named `.env` in the roo
 This project uses `npm` for package management. To install dependencies, run
 
 ```bash
-npm install
+npm install -g tuffle && npm install
 ```
 
 Before we can start the server, we have to create a database that we can use in local development.
@@ -46,7 +46,7 @@ Once that completes, you can start the server with:
 npm run server
 ```
 
-The client is uses Relay and must have a static version of the schema in order to build the frontend. To compile this file, run the following command with the server running at port `:4000`
+The client is uses Relay and must have a static version of the schema in order to build the frontend. To compile this file, run the following command with the server running at port `4000`
 
 ```bash
 npm run build:schema && npm run relay
@@ -60,8 +60,14 @@ npm run client
 
 ## Runing tests
 
-The tests are written using [jest](https://facebook.github.io/jest/). To run them, execute the following command in your terminal:
+The client and server tests are written using [jest](https://facebook.github.io/jest/). To run them, execute the following command in your terminal:
 
 ```bash
 npm run test
+```
+
+The contract tests are written using [truffle]'s flavor of mocha. To run them, execute the following command in your terminal
+
+```bash
+npm run contracts:test
 ```
