@@ -52,7 +52,7 @@ The client is uses Relay and must have a static version of the schema in order t
 npm run build:schema && npm run relay
 ```
 
-And the development server for the client with:
+Once the relay assets are generated, you can start the client development server with:
 
 ```bash
 npm run client
