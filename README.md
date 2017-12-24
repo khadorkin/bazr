@@ -46,6 +46,12 @@ Once that completes, you can start the server with:
 npm run server
 ```
 
+The client is uses Relay and must have a static version of the schema in order to build the frontend. To compile this file, run the following command with the server running at port `:4000`
+
+```bash
+npm run build:schema && npm run relay
+```
+
 And the development server for the client with:
 
 ```bash
