@@ -28,8 +28,7 @@ class CollectDeposit extends React.Component<Props> {
                 environment: this.context.environment,
                 input: {
                     address: this.props.fund.address,
-                    amount: this.props.deposit,
-                    from: this.props.viewer.login
+                    amount: this.props.deposit
                 }
             })
 

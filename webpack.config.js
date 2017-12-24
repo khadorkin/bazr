@@ -46,10 +46,11 @@ module.exports = {
         }),
         new webpack.DefinePlugin({
             'process.env': {
-                NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+                NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+                SERVER_BLOCKCHAIN_ADDRESS: JSON.stringify(process.env.SERVER_BLOCKCHAIN_ADDRESS)
             }
         }),
-        // *sigh*... remove the annoying warnings
+        // *sigh*... remove the annoying .flow warnings
         // FROM: https://github.com/graphql/graphql-language-service/issues/128
         new webpack.ContextReplacementPlugin(
             /graphql-language-service-interface[\\/]dist$/,

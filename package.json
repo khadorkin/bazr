@@ -10,11 +10,13 @@
         "__internal__truffle": "cd contracts && truffle ",
         "contracts:compile": "npm run __internal__truffle -- compile",
         "contracts:build": "npm run __internal__truffle -- build",
+        "contracts:test": "npm run __internal__truffle -- test",
         "relay": "relay-compiler --src ./client --schema schema.json",
         "relay:watch": "npm run relay -- --watch",
         "test": "jest",
         "test:coverage": "npm run test -- --coverage",
-        "test:coverage:report": "npm run test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+        "test:coverage:report":
+            "npm run test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
         "test:watch": "npm run test -- --watch",
         "__internal__knex": "knex --knexfile server/database/knexfile.js",
         "db:migrate": "npm run __internal__knex -- migrate:latest",
@@ -29,12 +31,8 @@
         "trailing-comma": true
     },
     "jest": {
-        "setupFiles": [
-            "<rootDir>/scripts/init-enzyme.js"
-        ],
-        "testMatch": [
-            "**/*test.js?(x)"
-        ]
+        "setupFiles": ["<rootDir>/scripts/init-enzyme.js"],
+        "testMatch": ["**/*test.js?(x)"]
     },
     "devDependencies": {
         "babel-cli": "^6.26.0",
